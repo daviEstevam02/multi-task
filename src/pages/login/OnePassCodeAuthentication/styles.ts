@@ -121,7 +121,6 @@ export {
     Form,
     ImageContainer,
     ButtonContainer,
-    InputContainer,
     Title,
     StrongTitle,
     SubTitle,

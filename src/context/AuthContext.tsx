@@ -1,7 +1,7 @@
 import { ReactNode, createContext, useState } from "react";
 import { login, signInWithOnePassCode } from "../services/user-services/user.services";
 import { saveAuthToken } from "../utils/auth-token";
-import { CustomToast, swalToast } from "../components/CustomToast";
+import { swalToast } from "../components/CustomToast";
 
 
 interface AuthProviderProps {

@@ -20,7 +20,7 @@ export function OnePassCodeAuthentication(){
     const { state } = useLocation<LocationProps>();
 
 
-    const handlePaste = (e, index) => {
+    const handlePaste = ({ e, index }: any) => {
         e.preventDefault();
         const pastedData = e.clipboardData.getData('text/plain');
     
@@ -90,10 +90,10 @@ export function OnePassCodeAuthentication(){
                             render={({ field: {value, onChange} }) => (
                                 <PinInputField
                                 type="text"
-                                maxLength="1"
+                                maxLength={1}
                                 value={value}
                                 onChange={onChange}
-                                onPaste={(e) => handlePaste(e, index)}
+                                onPaste={(e) => handlePaste({ e, index })}
                             />
                             )}
                         />
