@@ -20,7 +20,7 @@ export function AuthRoutes() {
   ];
 
   return (
-    <Switch>
+     <Switch>
       {routes.map((router) => (
         <Route
           key={router.path}

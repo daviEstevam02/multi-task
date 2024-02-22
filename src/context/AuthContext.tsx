@@ -1,6 +1,6 @@
-import { ReactNode, createContext, useState } from "react";
+import { ReactNode, createContext, useCallback, useState } from "react";
 import { login, signInWithOnePassCode } from "../services/user-services/user.services";
-import { saveAuthToken } from "../utils/auth-token";
+import { clearAuthToken, saveAuthToken } from "../utils/auth-token";
 import { swalToast } from "../components/CustomToast";
 
 
@@ -10,6 +10,7 @@ interface AuthProviderProps {
 
 interface AuthContextProps{
     signIn: (email: string) => void;
+    signOut: () => void;
     verifyOnePassCode(email: string, onePassCode: string): Promise<void>;
     userData?: UserData;
     isAuthenticated?: boolean;
@@ -57,9 +58,19 @@ export function AuthProvider({ children }: AuthProviderProps){
         }
     }
 
+    const clearTokenAndStates = useCallback(() => {
+        clearAuthToken();
+        setUserData(null!);
+      }, []);
+
+      const signOut = useCallback(() => {
+        clearTokenAndStates();
+      }, []);
+
     return(
         <AuthContext.Provider
             value={{
+                signOut,
                 signIn,
                 verifyOnePassCode,
                 userData,

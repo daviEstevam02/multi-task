@@ -1,8 +1,9 @@
 import { useUser } from "../hooks/useUser";
+import { AppRoutes } from "./app.routes";
 import { AuthRoutes } from "./auth.routes";
 
 export function Routes(){
     const { isAuthenticated } = useUser();
 
-    return isAuthenticated ? <h1>Teste</h1> : <AuthRoutes />
+    return isAuthenticated ? <AppRoutes /> : <AuthRoutes />
 }

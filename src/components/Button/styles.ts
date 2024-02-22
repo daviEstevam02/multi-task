@@ -23,7 +23,17 @@ export const Container = styled.button<ButtonProps>`
   letter-spacing: 1.3px;
   font-weight: bold;
   cursor: pointer;
-  position: relative;
+
+  ${props => 
+    props.backgroundColor === "transparent" ? 
+    css`
+    background-color: transparent !important;
+    box-shadow: none !important;
+  `:
+    css`
+      background-color: ${props.backgroundColor} !important;
+    `
+  }
 
   ${props =>
     props.variant && 
@@ -39,7 +49,19 @@ export const Container = styled.button<ButtonProps>`
   ${props =>
     props.width &&
     css`
-      width: ${props.width};
+      width: ${props.width} !important;
+    `}
+
+    ${props =>
+    props.color &&
+    css`
+      color: ${props.color} !important;
+    `}
+
+    ${props =>
+    props.height &&
+    css`
+      height: ${props.height} !important;
     `}
 
   box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.15);
