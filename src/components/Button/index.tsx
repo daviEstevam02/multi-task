@@ -13,6 +13,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   backgroundColor?: string;
   color?: string;
   variant?: string;
+  border?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -27,6 +28,7 @@ const Button: React.FC<ButtonProps> = ({
   width,
   variant,
   height,
+  border,
   ...rest
 }) => {
   return (
@@ -42,6 +44,7 @@ const Button: React.FC<ButtonProps> = ({
       height={height}
       backgroundColor={backgroundColor}
       color={color}
+      border={border}
     >
       {loading ? '' : children}
     </Container>

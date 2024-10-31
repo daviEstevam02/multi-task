@@ -4,6 +4,7 @@ import { Headbar } from "../components/HeadBar";
 import { Home } from "../pages/home";
 import { Sidebar } from "../components/Sidebar";
 import { useState } from "react";
+import { CreateTask } from "../pages/task/CreateTask";
 
 export function AppRoutes() {
   const routes = [
@@ -12,6 +13,12 @@ export function AppRoutes() {
       name: "Home",
       path: "/",
       component: Home,
+    },
+    {
+      id: 5,
+      name: "Create Work Item",
+      path: "/work-item/create",
+      component: CreateTask
     }
   ];
 

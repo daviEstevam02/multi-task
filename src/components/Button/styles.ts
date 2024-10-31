@@ -11,6 +11,7 @@ interface ButtonProps {
   backgroundColor?: string;
   tertiary?: boolean;
   variant?: string;
+  border?: string;
 }
 
 export const Container = styled.button<ButtonProps>`
@@ -34,6 +35,10 @@ export const Container = styled.button<ButtonProps>`
       background-color: ${props.backgroundColor} !important;
     `
   }
+
+  ${props => props.border && css`
+    border: ${props.border} !important;
+  `}
 
   ${props =>
     props.variant && 

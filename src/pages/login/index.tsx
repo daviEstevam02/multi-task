@@ -1,9 +1,8 @@
 import { Container, LoginBox, Image as Img, Form, ImageContainer, ButtonContainer, InputContainer, Title, StrongTitle, SubTitle, TitleContainer } from "./styles";
 import loginImg from "../../assets/login.jpg"
-import Input from "../../components/Input";
-import Button from "../../components/Button";
+import { Input, Button, LogoIcon } from "../../components"
+import { useUser, useAccounts } from "../../hooks";
 import { Controller, useForm } from "react-hook-form"
-import { useUser } from "../../hooks/useUser";
 import { useHistory } from "react-router-dom";
 
 interface LoginFrom {
@@ -11,10 +10,11 @@ interface LoginFrom {
 }
 
 export function Login(){
-
     const { handleSubmit, control } = useForm<LoginFrom>();
     const { signIn } = useUser();
     const { push } = useHistory();
+
+    const { azureAuthenticate } = useAccounts();
 
     function handleClickSubmit(email: string){
         push({
@@ -33,10 +33,10 @@ export function Login(){
     return (
         <Container>
             <LoginBox>
-                <Form onSubmit={handleSubmit(onSubmit)}>
+                <Form>
                     <TitleContainer>
                     <Title>
-                        SEJA BEM-VINDO AO <StrongTitle>PASSWORDLESS</StrongTitle>
+                        SEJA BEM-VINDO AO <StrongTitle>MULTITASK</StrongTitle>
                     </Title>
                     <SubTitle>Antes de continuar, faça seu Login.</SubTitle>
                     </TitleContainer>
@@ -61,7 +61,21 @@ export function Login(){
                     />
                     </InputContainer>
                     <ButtonContainer>
-                        <Button type="submit">Acessar minha conta</Button>
+                        <Button type="submit" onClick={handleSubmit(onSubmit)}>Acessar minha conta</Button>
+                        <Button 
+                            backgroundColor="#fff"
+                            onClick={azureAuthenticate}
+                            color="#000"
+                            border="1px solid #e4e4e4"
+                            style={{ display:"flex", alignItems:"center", justifyContent:"center", marginTop:"10px" }}
+                        > <LogoIcon iconStyle={{ margin: "10px" }} iconName="microsoft"/>  Logar com  Microsoft</Button>
+                         <Button 
+                            backgroundColor="#fff"
+                            onClick={azureAuthenticate}
+                            color="#000"
+                            border="1px solid #e4e4e4"
+                            style={{ display:"flex", alignItems:"center", justifyContent:"center", marginTop:"10px" }}
+                        > <LogoIcon iconStyle={{ margin: "10px" }}  iconName="github"/>  Logar com github</Button>
                     </ButtonContainer>
                 </Form>
                 <ImageContainer>

@@ -40,9 +40,8 @@ export function AccountsAuthenticatorProvider({ children }: AccountsAuthenticato
             await msalInstance.loginPopup()
             .then(response => {
                 setAzureUserData(response.account)
-                console.log("scopes: ",response.scopes)
                 console.log("account: ",response.account)
-                })
+            })
             .catch(error => {
                 swalToast({ 
                     status: "error", 

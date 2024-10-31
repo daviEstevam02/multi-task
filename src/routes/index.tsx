@@ -1,9 +1,7 @@
-import { useUser } from "../hooks/useUser";
+import withAuth from "../hoc/with-auth";
 import { AppRoutes } from "./app.routes";
-import { AuthRoutes } from "./auth.routes";
 
 export function Routes(){
-    const { isAuthenticated } = useUser();
-
-    return isAuthenticated ? <AppRoutes /> : <AuthRoutes />
+    const AuthenticatedRoutes = withAuth(AppRoutes);
+    return <AuthenticatedRoutes />;
 }
