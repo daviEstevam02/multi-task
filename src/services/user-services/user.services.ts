@@ -1,38 +1,33 @@
 import API from "../api";
 
 interface SignIn {
-    email: string;
-    passwordCode?: string;
+  email: string;
+  passwordcode?: string;
 }
 
 interface LoginData {
+  user: {
     email: string;
     username: string;
-    token: string;
+    id: string;
+  };
+  token: string;
 }
 
-async function login({
-    email
-}: SignIn) {
-    const { data } = await API.post("/login", {
-        email
-    })
-    return data;
-}
-
-async function signInWithOnePassCode({
+async function login({ email }: SignIn) {
+  const { data } = await API.post("/login", {
     email,
-    passwordCode
-}: SignIn) {
-    const { data } = await API.post<LoginData>("/verify-code", {
-        email,
-        passwordCode
-    })
-
-    return data;
+  });
+  return data;
 }
 
-export {
-    login,
-    signInWithOnePassCode
+async function signInWithOnePassCode({ email, passwordcode }: SignIn) {
+  const { data } = await API.post<LoginData>("/validate-code", {
+    email,
+    passwordcode,
+  });
+
+  return data;
 }
+
+export { login, signInWithOnePassCode };
