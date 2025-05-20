@@ -2,30 +2,34 @@ import Button from "../Button";
 
 import { IoAddSharp } from "react-icons/io5";
 import { Container } from "./styles";
-import { useHistory } from "react-router-dom";
+import { useDisclosure } from "../../hooks/useDisclosure";
+import { CreateTask } from "../../pages/task/CreateTask";
 
-export function Homeheader(){
+export function Homeheader() {
+  const { isOpen, onClose, onOpen } = useDisclosure();
 
-    const { push } = useHistory();
+  return (
+    <>
+      <Container>
+        <p>Work items</p>
 
-    return(
-        <Container>
-            <p>Teste</p>
-
-            <Button 
-                onClick={() =>
-                    push({
-                      pathname: `/work-item/create`
-                    })
-                  }
-                width="170px" 
-                color="#888" 
-                backgroundColor="transparent"
-                style={{ display: "flex", alignItems:"center", fontSize:"14px", justifyContent:"space-around" }}
-                >
-                    <IoAddSharp size={20}/>
-                    New Work Item
-            </Button>
-        </Container>
-    )
+        <Button
+          onClick={onOpen}
+          width="170px"
+          color="#888"
+          backgroundColor="transparent"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            fontSize: "14px",
+            justifyContent: "space-around",
+          }}
+        >
+          <IoAddSharp size={20} />
+          New Work Item
+        </Button>
+      </Container>
+      <CreateTask isOpen={isOpen} onClose={onClose} />
+    </>
+  );
 }

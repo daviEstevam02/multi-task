@@ -23,8 +23,8 @@ export const GlobalStyles = createGlobalStyle`
       padding: 0;
       font-family: 'Roboto', sans-serif;
       width: 100%;
-      height: 100%;
-      background-color: #eaeaea;
+      height: 100vh;
+      background-color: #eaeaea;    
     }
 
     @font-face {
@@ -36,4 +36,4 @@ export const GlobalStyles = createGlobalStyle`
   h1,h2,h3,h4,h5,h6,p,div,input,button{
     font-family: 'Roboto';
   }
-`
+`;
